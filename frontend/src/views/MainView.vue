@@ -6,8 +6,12 @@
         <div class="box reference-region">
           <div class="header">Reference Region</div>
           <div class="content">
-            Dependency graph<br />
-            Bill of Materials
+            <form @submit.prevent="sendData">
+              <label for="dependencyGraph">Dependency graph:</label>
+              <textarea id="dependencyGraph" v-model="dependencyGraphData"></textarea>
+              <button type="submit">Submit</button>
+            </form>
+            <hot-table :settings="hotSettings" ref="handsontableComponent" class="small-table"></hot-table>
           </div>
         </div>
         <div class="box tutorial-sheet-questions">
@@ -24,12 +28,59 @@
 </template>
 
 <script>
+import { HotTable } from '@handsontable/vue3';
+import axios from 'axios';
 import SideBar from '../components/SideBar/SideBar.vue';
 
 export default {
   name: 'MainContent',
   components: {
+    HotTable,
     SideBar,
+  },
+  data() {
+    return {
+      dependencyGraphData: '',
+      hotSettings: {
+        data: [
+          ['', 1, 2, 3],
+          [1, '', '', ''],
+          [2, '', '', ''],
+          [3, '', '', ''],
+        ],
+        colHeaders: true,
+        rowHeaders: true,
+        columns: [
+          { readOnly: true },
+          { readOnly: false },
+          { readOnly: false },
+          { readOnly: false },
+        ],
+        cells: function (row, col) {
+          var cellProperties = {};
+          if (row === 0 || col === 0) {
+            cellProperties.readOnly = true;
+          }
+          return cellProperties;
+        },
+        minSpareRows: 0,
+        rowHeaders: false,
+        colHeaders: false,
+        width: '100%',
+        height: 150, // Adjusted height for smaller view
+      },
+    };
+  },
+  methods: {
+    async sendData() {
+      try {
+        const data = this.$refs.handsontableComponent.hotInstance.getData();
+        const response = await axios.post('http://localhost:8088/submit-table-data', { data });
+        console.log('Data submitted successfully:', response.data);
+      } catch (error) {
+        console.error('Error submitting data:', error);
+      }
+    },
   },
 };
 </script>
@@ -102,5 +153,20 @@ body, html {
   overflow: hidden; /* Ensure no overflow */
   height: calc(100% - 60px); /* Ensure the content fits within the box */
   box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  margin-top: 10px;
+}
+
+button {
+  margin-top: 10px;
+}
+
+.small-table {
+  width: 100%;
+  height: 150px; /* Adjusted height for smaller view */
 }
 </style>
