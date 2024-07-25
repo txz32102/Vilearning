@@ -1,0 +1,21 @@
+{
+    "editor.fontSize": 22,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "remote.SSH.remotePlatform": {
+        "47.100.233.136": "linux"
+    },
+    "explorer.confirmPasteNative": false,
+    "jupyter.askForKernelRestart": false,
+    "window.zoomLevel": 1,
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "remote.autoForwardPortsSource": "hybrid",
+    "python.defaultInterpreterPath": "C:\\Users\\13816\\anaconda3\\python.exe",
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "window.menuBarVisibility": "compact",
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "editor.minimap.enabled": false,
+    "terminal.integrated.profiles.windows":{"Git Bash":{"path":"C:\\Program Files\\Git\\bin\\bash.exe"},  },
+    // "terminal.integrated.defaultProfile.windows": "Git Bash"
+}
