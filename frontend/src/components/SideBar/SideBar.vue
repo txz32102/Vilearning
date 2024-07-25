@@ -20,7 +20,7 @@
         return {
           menu: [
             {
-              header: 'Druggable protein',
+              header: 'ViLearning',
               hiddenOnCollapse: true,
             },
             {
