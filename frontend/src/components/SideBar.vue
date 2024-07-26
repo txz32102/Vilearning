@@ -24,8 +24,8 @@
               hiddenOnCollapse: true,
             },
             {
-              href: '/About',
-              title: 'About',
+              href: '/table',
+              title: 'table',
               icon: {
                 element: 'img',
                 attributes: { src: cs },
