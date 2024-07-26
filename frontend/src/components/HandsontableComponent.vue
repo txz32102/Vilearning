@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div ref="hotTable"></div>
+    <div ref="hotTable" class="handsontable-container"></div>
   </div>
 </template>
 
@@ -10,6 +10,12 @@ import 'handsontable/dist/handsontable.full.css';
 
 export default {
   name: 'HandsontableComponent',
+  data() {
+    return {
+      tableWidth: '300px', // Set the desired width
+      tableHeight: '150px', // Set the desired height
+    };
+  },
   mounted() {
     this.hot = new Handsontable(this.$refs.hotTable, {
       data: [
@@ -21,8 +27,6 @@ export default {
       ],
       colHeaders: [' ', 'A', 'B', 'C', 'D'],
       rowHeaders: true,
-      width: '600px',
-      height: '300px',
       licenseKey: 'non-commercial-and-evaluation',
     });
   },
@@ -35,5 +39,18 @@ export default {
 </script>
 
 <style>
-/* You can add custom styles here */
+.handsontable-container {
+  width: 300px; /* Set the desired width */
+  height: 150px; /* Set the desired height */
+}
+
+.handsontable-container .ht_master .htCore tbody td {
+  font-size: 10px; /* Set a smaller font size */
+  padding: 2px; /* Adjust the padding to make cells smaller */
+}
+
+.handsontable-container .ht_master .htCore thead th {
+  font-size: 10px; /* Set a smaller font size for headers */
+  padding: 2px; /* Adjust the padding for headers */
+}
 </style>

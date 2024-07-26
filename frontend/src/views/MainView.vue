@@ -27,46 +27,19 @@
 <script>
 import axios from 'axios';
 import SideBar from '../components/SideBar.vue';
-import HandsontableComponent from '../components/HandsontableComponent.vue';
+// import HandsontableComponent from '../components/HandsontableComponent.vue';
 import CardComponent from '../components/CardComponent.vue';
 
 export default {
   name: 'MainContent',
   components: {
     SideBar,
-    HandsontableComponent,
+    // HandsontableComponent,
     CardComponent,
   },
   data() {
     return {
       dependencyGraphData: '',
-      hotSettings: {
-        data: [
-          ['', 'a', 'b', 'c', 'd'],
-          ['1', '', '', '', ''],
-          ['2', '', '', '', ''],
-          ['3', '', '', '', ''],
-          ['4', '', '', '', ''],
-        ],
-        colHeaders: true,
-        rowHeaders: true,
-        columns: [
-          { readOnly: true },
-          { readOnly: false },
-          { readOnly: false },
-          { readOnly: false },
-        ],
-        cells: function (row, col) {
-          var cellProperties = {};
-          if (row === 0 || col === 0) {
-            cellProperties.readOnly = true;
-          }
-          return cellProperties;
-        },
-        minSpareRows: 0,
-        width: '100%',
-        height: 150, // Adjusted height for smaller view
-      },
     };
   },
   methods: {
