@@ -32,8 +32,8 @@
             },
             },
             {
-              href: '/Predict',
-              title: 'Predict',
+              href: '/Debug',
+              title: 'Debug',
               icon: {
                 element: 'img',
                 attributes: { src: ht },

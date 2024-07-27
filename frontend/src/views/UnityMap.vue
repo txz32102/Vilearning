@@ -31,7 +31,7 @@ import SideBar from '../components/SideBar.vue';
 import CardComponent from '../components/CardComponent.vue';
 
 export default {
-  name: 'MainContent',
+  name: 'UnityMap',
   components: {
     SideBar,
     // HandsontableComponent,
@@ -64,11 +64,11 @@ body, html {
 }
 
 .main-content {
-  margin-left: 100px; /* Adjust this value based on your sidebar width */
+  margin-left: 10%; /* Adjust this value based on your sidebar width */
   padding: 20px;
   display: flex;
   justify-content: flex-start; /* Align boxes to the start (left) */
-  align-items: center;
+  align-items: flex-start; /* Align items to the start (top) */
   height: 100vh;
   background-color: #ffffff; /* Background color similar to your image */
   overflow: hidden; /* Prevent scrolling */
