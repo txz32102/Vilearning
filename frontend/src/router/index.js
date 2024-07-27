@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import UnityMap from '../views/UnityMap.vue';
 import TableView from '../views/TableView.vue';
 import DebugView from '@/views/DebugView.vue';
+import MainPage from '@/views/MainPage.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,7 +29,12 @@ const router = createRouter({
       path: '/debug',
       name: 'debug', 
       component: DebugView
-    }
+    },
+    {
+      path: '/',
+      name: 'main',
+      component: MainPage
+    },
   ]
 })
 
