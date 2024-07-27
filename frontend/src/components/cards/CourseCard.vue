@@ -4,11 +4,10 @@
       <img src="@/assets/logo.svg" alt="icon" />
     </div>
     <div class="card-content">
-      <div class="course-code">MECH50001</div>
-      <div class="course-title">Heat Transfer</div>
+      <div class="course-code">{{ courseCode }}</div>
+      <div class="course-title">{{ courseTitle }}</div>
       <div class="course-links">
-        <a href="#">More info</a>
-        <a href="#">Open Multiple Instructors</a>
+        <a v-for="(link, index) in courseLinks" :key="index" :href="link.href">{{ link.text }}</a>
       </div>
     </div>
   </div>
@@ -21,6 +20,18 @@ export default {
     zoom: {
       type: Number,
       default: 100,
+    },
+    courseCode: {
+      type: String,
+      required: true,
+    },
+    courseTitle: {
+      type: String,
+      required: true,
+    },
+    courseLinks: {
+      type: Array,
+      default: () => [],
     },
   },
 };
@@ -35,6 +46,7 @@ export default {
   padding: 10px;
   margin: 20px;
   max-width: 300px;
+  min-width: 300px; /* Ensure consistent width */
 }
 
 .card-icon {
@@ -50,16 +62,24 @@ export default {
 
 .card-content {
   margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
 }
 
 .course-code {
   font-weight: bold;
   font-size: 0.8em;
+  white-space: nowrap;
 }
 
 .course-title {
-  font-size: 1.2em;
+  font-size: 1em;
   margin: 5px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .course-links {
@@ -71,6 +91,7 @@ export default {
   text-decoration: none;
   color: #007bff;
   font-size: 0.8em;
+  white-space: nowrap;
 }
 
 .course-links a:hover {
